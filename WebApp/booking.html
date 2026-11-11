@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPL Ticket Booking Form</title>
+    <link rel="stylesheet" href="../CSS/styles.css">
+</head>
+<body>
+
+    <!-- Navigation -->
+    <header>
+        <nav>
+            <h2>IPL 2026</h2>
+            <div>
+                <a href="index.html">Home</a>
+                <a href="booking.html">Book Ticket</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Booking Form -->
+    <section id="booking">
+        <h2>IPL Ticket Booking Form</h2>
+
+        <form id="bookingForm" action="#" method="get">
+
+            <label>Name:</label>
+            <input type="text" name="name"
+                placeholder="Enter your name"
+                minlength="3" maxlength="40" required>
+
+            <label>Email:</label>
+            <input type="email" name="email"
+                placeholder="Enter your email" required>
+
+            <label>Phone Number:</label>
+            <input type="tel" name="phone"
+                placeholder="10 digit mobile number"
+                pattern="[0-9]{10}" maxlength="10"
+                title="Enter exactly 10 digits" required>
+
+            <label>Select Match:</label>
+            <select name="match" required>
+                <option value="">Choose Match</option>
+                <option value="RCB vs CSK">RCB vs CSK</option>
+                <option value="MI vs KKR">MI vs KKR</option>
+            </select>
+
+            <label>Stand Category:</label>
+            <select name="stand" required>
+                <option value="">Choose Stand</option>
+                <option value="General">General</option>
+                <option value="Premium">Premium</option>
+                <option value="VIP">VIP</option>
+            </select>
+
+            <label>Number of Tickets:</label>
+            <input type="number" name="quantity"
+                min="1" max="10" value="1" required>
+
+            <label>Additional Preferences:</label>
+            <p>
+                <input type="radio" name="preference"
+                    value="Near Ground" required>
+                Near Ground
+            </p>
+            <p>
+                <input type="radio" name="preference"
+                    value="Near Pavilion">
+                Near Pavilion
+            </p>
+
+            <br>
+
+            <button type="submit">Submit Booking</button>
+            <button type="reset">Reset Form</button>
+
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 IPL Ticket Booking. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
