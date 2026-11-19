@@ -13,7 +13,12 @@
     <header>
         <nav>
             <h2>IPL 2026</h2>
-            <div>
+
+            <button id="menuToggle" class="menu-toggle" aria-label="Toggle navigation">
+                ☰
+            </button>
+
+            <div id="navLinks" class="nav-links">
                 <a href="#matches">Matches</a>
                 <a href="booking.html">Book Ticket</a>
                 <a href="#mybookings">My Bookings</a>
@@ -33,6 +38,7 @@
     <!-- About IPL -->
     <section class="about" id="about">
         <h2>About IPL 2026</h2>
+
         <h3>Popular Teams</h3>
         <ul>
             <li>Chennai Super Kings</li>
@@ -40,6 +46,7 @@
             <li>Royal Challengers Bengaluru</li>
             <li>Kolkata Knight Riders</li>
         </ul>
+
         <h3>Major Match Venues</h3>
         <ul>
             <li>Chinnaswamy Stadium, Bengaluru</li>
@@ -51,44 +58,69 @@
     <!-- Match Schedule -->
     <section id="matches">
         <h2>IPL Match Schedule</h2>
-        <label>Filter by Team:</label>
-        <select id="teamFilter" onchange="filterMatches()">
-            <option value="All">All Teams</option>
-            <option value="RCB">RCB</option>
-            <option value="CSK">CSK</option>
-            <option value="MI">MI</option>
-            <option value="KKR">KKR</option>
-        </select>
 
-        <div class="table-container">
-            <table>
-                <tr>
-                    <th>Match No.</th><th>Teams</th>
-                    <th>Date & Time</th><th>Venue</th>
-                    <th>General</th><th>Premium</th><th>VIP</th>
-                    <th>Action</th>
-                </tr>
-                <tr data-teams="RCB CSK">
-                    <td>1</td><td>RCB vs CSK</td>
-                    <td>10-04-2026, 7:30 PM</td><td>Bengaluru</td>
-                    <td>₹800</td><td>₹1500</td><td>₹3000</td>
-                    <td><button onclick="selectMatch(1)">Book</button></td>
-                </tr>
-                <tr data-teams="MI KKR">
-                    <td>2</td><td>MI vs KKR</td>
-                    <td>12-04-2026, 7:30 PM</td><td>Mumbai</td>
-                    <td>₹900</td><td>₹1800</td><td>₹3500</td>
-                    <td><button onclick="selectMatch(2)">Book</button></td>
-                </tr>
-            </table>
+        <div class="match-controls">
+            <div>
+                <label for="teamFilter">Filter by Team:</label>
+                <select id="teamFilter">
+                    <option value="All">All Teams</option>
+                    <option value="RCB">RCB</option>
+                    <option value="CSK">CSK</option>
+                    <option value="MI">MI</option>
+                    <option value="KKR">KKR</option>
+                </select>
+            </div>
+
+            <div class="view-buttons">
+                <button id="gridView">Grid View</button>
+                <button id="listView">List View</button>
+            </div>
+        </div>
+
+        <div id="matchContainer" class="match-grid">
+
+            <!-- Match 1 -->
+            <article class="match-card" data-teams="RCB CSK">
+                <h3>Match 1</h3>
+                <h2>RCB vs CSK</h2>
+                <p><strong>Date:</strong> 10-04-2026, 7:30 PM</p>
+                <p><strong>Venue:</strong> Bengaluru</p>
+
+                <div class="match-prices">
+                    <p>General: ₹800</p>
+                    <p>Premium: ₹1500</p>
+                    <p>VIP: ₹3000</p>
+                </div>
+
+                <button class="book-match" data-match="1">Book</button>
+            </article>
+
+            <!-- Match 2 -->
+            <article class="match-card" data-teams="MI KKR">
+                <h3>Match 2</h3>
+                <h2>MI vs KKR</h2>
+                <p><strong>Date:</strong> 12-04-2026, 7:30 PM</p>
+                <p><strong>Venue:</strong> Mumbai</p>
+
+                <div class="match-prices">
+                    <p>General: ₹900</p>
+                    <p>Premium: ₹1800</p>
+                    <p>VIP: ₹3500</p>
+                </div>
+
+                <button class="book-match" data-match="2">Book</button>
+            </article>
+
         </div>
     </section>
 
     <!-- Booking Form -->
     <section id="booking">
         <h2>Book Your Ticket</h2>
+
         <div class="booking-layout">
             <form id="bookingForm">
+
                 <label>Match:</label>
                 <select id="match" required>
                     <option value="">Choose Match</option>
@@ -134,29 +166,39 @@
     <!-- My Bookings -->
     <section id="mybookings">
         <h2>My Ticket Bookings</h2>
-        <table>
-            <tr>
-                <th>Booking ID</th><th>Name</th>
-                <th>Match</th><th>Stand</th>
-                <th>Tickets</th><th>Amount</th>
-            </tr>
-            <tbody id="bookingRecords"></tbody>
-        </table>
+
+        <div class="table-container">
+            <table>
+                <tr>
+                    <th>Booking ID</th>
+                    <th>Name</th>
+                    <th>Match</th>
+                    <th>Stand</th>
+                    <th>Tickets</th>
+                    <th>Amount</th>
+                </tr>
+                <tbody id="bookingRecords"></tbody>
+            </table>
+        </div>
+
         <p id="emptyMessage">No bookings available yet.</p>
     </section>
 
     <!-- Guidelines -->
     <section id="guidelines">
         <h2>Booking Guidelines</h2>
+
         <div class="guidelines">
             <article class="card">
                 <h3>Ticket Verification</h3>
                 <p>Carry your valid ticket and QR code.</p>
             </article>
+
             <article class="card">
                 <h3>ID Proof Requirement</h3>
                 <p>Carry a valid government-issued ID proof.</p>
             </article>
+
             <article class="card">
                 <h3>Prohibited Items</h3>
                 <p>Weapons and fireworks are not allowed.</p>
@@ -171,5 +213,6 @@
 
     <script src="script.js"></script>
     <script src="app.js"></script>
+
 </body>
 </html>
